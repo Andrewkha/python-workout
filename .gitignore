@@ -1,3 +1,5 @@
 .coverage
 htmlcov/*
 htmlcov
+/venv
+/.idea

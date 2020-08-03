@@ -4,22 +4,41 @@ import random
 
 
 def guessing_game():
-    """Generate a random integer from 1 to 100.
+    number = random.randint(1, 100)
+    print(number)
+    guess = int(input("Provide your guess: "))
 
-Ask the user repeatedly to guess the number.
-Until they guess correctly, tell them to guess higher or lower.
-"""
-    answer = random.randint(0, 100)
+    while guess != number:
+        if guess > number:
+            print("Too high")
+        else:
+            print("Too low")
+        guess = int(input("Provide your guess: "))
 
-    while True:
-        user_guess = int(input('What is your guess? '))
+    print("Just right")
 
-        if user_guess == answer:
-            print(f'Right!  The answer is {user_guess}')
+
+"""Just 3 chances"""
+
+
+def guessing_game_tree():
+    number = random.randint(1, 100)
+    print(number)
+
+    for step in range(0, 3):
+        guess = int(input("Provide your guess: "))
+
+        if guess > number:
+            print("Too high")
+        elif guess < number:
+            print("Too low")
+        else:
+            print("Just right")
             break
 
-        if user_guess < answer:
-            print(f'Your guess of {user_guess} is too low!')
+    else:
+        print("Too many attempts")
 
-        else:
-            print(f'Your guess of {user_guess} is too high!')
+
+# guessing_game()
+guessing_game_tree()
