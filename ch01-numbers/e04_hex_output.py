@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """Solution to chapter 1, exercise 4: hex_output"""
+"""Write a program that asks the user for their name and then produces a “name
+triangle”: the first letter of their name, then the first two letters, then the first
+three, and so forth, until the entire name is written on the final line."""
 
 
-def hex_output():
-    """Ask the user to enter a valid hexadecimal
-number, and print the decimal equivalent.
-"""
+def name_triangle(name):
+    output = ''
+    for char in name:
+        output += char
+        print(output)
 
-    decnum = 0
-    hexnum = input('Enter a hex number to convert: ')
-    for power, digit in enumerate(reversed(hexnum)):
-        decnum += int(digit, 16) * (16 ** power)
-    print(decnum)
+
+name_triangle('Andrewkha')
