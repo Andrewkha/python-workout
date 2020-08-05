@@ -6,19 +6,33 @@ def run_timing():
     """Asks the user repeatedly for numeric input.
 Prints the average time and number of runs.
 """
-
-    number_of_runs = 0
-    total_time = 0
+    runs = []
 
     while True:
-        one_run = input('Enter 10 km run time: ')
-
-        if not one_run:
+        run = input("Enter 10 km run time: ")
+        if not run:
             break
+        runs.append(float(run))
 
-        number_of_runs += 1
-        total_time += float(one_run)
+    print(f"Average of {sum(runs) / len(runs)}, over {len(runs)} runs")
 
-    average_time = total_time / number_of_runs
 
-    print(f'Average of {average_time}, over {number_of_runs} runs')
+def before_and_after(dec: float, before: int, after: int) -> float:
+    full, part = str(dec).split('.')
+    full = full[-before:]
+    part = part[0:after]
+    return float(f"{full}.{part}")
+
+# run_timing()
+print(before_and_after(1234.5678, 2, 3))
+
+
+from decimal import Decimal
+
+def decim():
+    a = Decimal(input('Enter a: '))
+    b = Decimal(input('Enter b: '))
+    return a + b
+
+
+print(decim())
