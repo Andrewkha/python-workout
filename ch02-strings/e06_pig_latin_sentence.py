@@ -43,8 +43,7 @@ def transpose(lst: list):
     result = [[] for _ in lst]
 
     for item in lst:
-        words = item.split()
-        for index, word in enumerate(words):
+        for index, word in enumerate(item.split()):
             result[index].append(word)
 
     for index, item in enumerate(result):
