@@ -7,3 +7,6 @@ def strsort(a_string):
 returns a string with its characters sorted.
 """
     return ''.join(sorted(a_string))
+
+
+print(strsort('azsxdcfvgbghew'))
