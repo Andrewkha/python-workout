@@ -7,9 +7,3 @@ def mysum(*items):
 The arguments should handle the + operator.
 If passed no arguments, then return an empty tuple.
 """
-    if not items:
-        return items
-    output = items[0]
-    for item in items[1:]:
-        output += item
-    return output

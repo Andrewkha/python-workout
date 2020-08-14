@@ -11,4 +11,3 @@ import pytest
     ([10], [10, 10])
 ])
 def test_firstlast(arg, output):
-    assert firstlast(arg) == output

@@ -22,4 +22,3 @@ sorted first by last name and then by first name.
 
 If passed an empty list, then return an empty list.
 """
-    return sorted(list_of_dicts, key=operator.itemgetter('last', 'first'))
