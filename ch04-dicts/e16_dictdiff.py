@@ -10,10 +10,3 @@ difference consists of a key and a two-element list, indicating the
 values from the two input dicts.  If a key exists in one dict but not
 another, then the corresponding value will be None.
 """
-    output = {}
-    all_keys = first.keys() | second.keys()
-
-    for key in all_keys:
-        if first.get(key) != second.get(key):
-            output[key] = [first.get(key), second.get(key)]
-    return output

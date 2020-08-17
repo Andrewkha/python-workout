@@ -16,19 +16,4 @@ on the global "MENU" dict.
   available.
 """
 
-    total = 0
-    while True:
-        order = input('Order: ').strip()
 
-        if not order:
-            break
-
-        if order in MENU:
-            price = MENU[order]
-            total += price
-            print(f'{order} costs {price}, total is {total}')
-
-        else:
-            print(f'We are fresh out of {order} today')
-
-    print(f'Your total is {total}')

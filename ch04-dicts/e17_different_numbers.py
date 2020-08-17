@@ -6,5 +6,3 @@ def how_many_different_numbers(numbers):
     """Takes a list of numbers as input.
 Returns the number of different numbers in that list.
 """
-    unique_numbers = set(numbers)
-    return len(unique_numbers)
