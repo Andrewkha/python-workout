@@ -13,9 +13,3 @@ The username and user ID from the passwd file will
 be written to the second file in CSV format, with
 a tab separator.
 """
-    with open(passwd_filename) as passwd, open(csv_filename, 'w') as output:
-        infile = csv.reader(passwd, delimiter=':')
-        outfile = csv.writer(output, delimiter='\t')
-        for record in infile:
-            if len(record) > 1:
-                outfile.writerow((record[0], record[2]))
