@@ -42,13 +42,13 @@ def parse_lnx():
     result = {}
     for line in open('linux-etc-passwd.txt'):
         if not line.startswith('#') and line.strip():
-            splitted_line = line.split(':')
+            splitted_line = line.strip().split(':')
             name = splitted_line[0]
-            id = splitted_line[2]
+            _id = splitted_line[2]
             home = splitted_line[5]
-            shell = splitted_line[-1].rstrip()
+            shell = splitted_line[-1]
 
-            result[name] = {'id': id, 'home': home, 'shell': shell}
+            result[name] = {'id': _id, 'home': home, 'shell': shell}
 
     return result
 
