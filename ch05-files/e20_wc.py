@@ -73,7 +73,7 @@ def letter_frequency():
     files = Path('..\\files').iterdir()
 
     for one in files:
-        with open(one,encoding='utf-8') as file:
+        with open(one, encoding='utf-8') as file:
             text = file.read().lower()
             for letter in ascii_lowercase:
                 result[letter] = result.get(letter, 0) + text.count(letter)
