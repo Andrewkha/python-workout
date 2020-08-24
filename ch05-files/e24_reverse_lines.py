@@ -81,4 +81,4 @@ def shells_to_file():
 
 # reverse_lines('output.txt', 'input.txt')
 split_file_in_two('mini-access-log.txt')
-shells_to_file()
+print(shells_to_file.__code__.co_varnames)

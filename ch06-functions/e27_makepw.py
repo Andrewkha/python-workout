@@ -13,10 +13,3 @@ integer argument, returns a string containing
 a random selection from "characters", of length
 "length".
 """
-    def create_password(length):
-        output = []
-
-        for i in range(length):
-            output.append(random.choice(characters))
-        return ''.join(output)
-    return create_password
