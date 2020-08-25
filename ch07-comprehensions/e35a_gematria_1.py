@@ -10,5 +10,3 @@ def gematria_dict():
 for all lowercase letters. The keys are the letters, and
 the values are the numbers, starting with 1 for 'a'.
 """
-    return {char: index
-            for index, char in enumerate(string.ascii_lowercase, 1)}

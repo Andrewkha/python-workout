@@ -8,5 +8,3 @@ def join_numbers(numbers):
 Output is a string containing the numbers in that iterable,
 separated by commas.
 """
-    return ','.join(str(number)
-                    for number in numbers)

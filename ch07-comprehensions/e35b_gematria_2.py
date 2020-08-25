@@ -11,8 +11,7 @@ def gematria_for(word):
     """Function that calculates the gematria
 for a given word, an argument passed as a string.
 """
-    return sum(GEMATRIA.get(one_char, 0)
-               for one_char in word)
+
 
 
 def gematria_equal_words(input_word):
@@ -20,7 +19,3 @@ def gematria_equal_words(input_word):
 and returns a list of strings (words) whose calculated
 gematria is identical.
 """
-    our_score = gematria_for(input_word.lower())
-    return [one_word.strip()
-            for one_word in open('/usr/share/dict/words')
-            if gematria_for(one_word.lower()) == our_score]

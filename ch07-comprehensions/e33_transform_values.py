@@ -9,5 +9,3 @@ Returns a dict in which the keys are the original
 dict's keys, but the values are the result of invoking
 the function on each original value.
 """
-    return {key: func(value)
-            for key, value in a_dict.items()}

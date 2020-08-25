@@ -8,10 +8,6 @@ def plword(word):
 word.  Returns a string, the input word translated into
 Pig Latin.
 """
-    if word[0] in 'aeiou':
-        return word + 'way'
-
-    return word[1:] + word[0] + 'ay'
 
 
 def plfile(filename):
@@ -19,6 +15,3 @@ def plfile(filename):
 containing the file's contents, with each word
 translated into Pig Latin.
 """
-    return ' '.join(plword(one_word)
-                    for one_line in open(filename)
-                    for one_word in one_line.split())

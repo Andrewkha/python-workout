@@ -8,6 +8,3 @@ def sum_numbers(numbers):
 Output is an integer, the sum of those words that can
 be turned into integers.
 """
-    return sum(int(number)
-               for number in numbers.split()
-               if number.isdigit())

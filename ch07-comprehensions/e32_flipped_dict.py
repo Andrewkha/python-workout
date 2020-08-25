@@ -8,5 +8,3 @@ def flipped_dict(a_dict):
 Returns a dict as output. The output dict's keys
 are the input dict's values, and vice versa.
 """
-    return {value: key
-            for key, value in a_dict.items()}

@@ -8,8 +8,3 @@ def get_sv(filename):
 this function returns a set of all words
 in which all five vowels can be found.
 """
-    vowels = {'a', 'e', 'i', 'o', 'u'}
-
-    return {word.strip()
-            for word in open(filename)
-            if vowels < set(word.lower())}
