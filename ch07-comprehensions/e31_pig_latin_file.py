@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-import operator
-
-
 """Solution to chapter 7, exercise 31: plfile"""
 
 
