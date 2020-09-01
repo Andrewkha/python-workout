@@ -52,8 +52,8 @@ def read_json():
         return {(one['city'], one['state']): one['population'] for one in json.load(file)}
 
 
-print(gematria_dict())
-print(read_config())
-print(read_config_integers())
-print(read_json())
+# print(gematria_dict())
+# print(read_config())
+# print(read_config_integers())
+# print(read_json())
 
