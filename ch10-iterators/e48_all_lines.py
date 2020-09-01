@@ -12,10 +12,4 @@ from each file in a named directory.
 
 Any file that cannot be opened, for whatever reason, is ignored.
 """
-    for filename in os.listdir(path):
-        full_filename = os.path.join(path, filename)
-        try:
-            for line in open(full_filename):
-                yield line
-        except OSError:
-            pass
+

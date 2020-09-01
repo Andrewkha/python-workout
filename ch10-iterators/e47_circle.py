@@ -7,16 +7,9 @@ class CircleIterator():
     """Iterator for Circle."""
 
     def __init__(self, data, max_times):
-        self.data = data
-        self.max_times = max_times
-        self.index = 0
+
 
     def __next__(self):
-        if self.index >= self.max_times:
-            raise StopIteration
-        value = self.data[self.index % len(self.data)]
-        self.index += 1
-        return value
 
 
 class Circle():
@@ -25,8 +18,7 @@ through the elements of an iterator until returning max_times
 items. """
 
     def __init__(self, data, max_times):
-        self.data = data
-        self.max_times = max_times
+
 
     def __iter__(self):
-        return CircleIterator(self.data, self.max_times)
+

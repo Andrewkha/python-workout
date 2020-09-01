@@ -10,6 +10,3 @@ elements of each iterable.
 
 It is similar to itertools.chain.
 """
-    for arg in args:
-        for item in arg:
-            yield item

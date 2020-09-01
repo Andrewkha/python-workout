@@ -8,8 +8,6 @@ class Scoop():
 The sole attribute is "flavor", a string.
 """
 
-    def __init__(self, flavor):
-        self.flavor = flavor
 
 
 def create_scoops():
@@ -17,8 +15,3 @@ def create_scoops():
 in a list, and iterates over that list, printing the
 flavors.
 """
-    scoops = [Scoop('chocolate'),
-              Scoop('vanilla'),
-              Scoop('persimmon')]
-    for scoop in scoops:
-        print(scoop.flavor)
