@@ -131,8 +131,8 @@ if __name__ == '__main__':
 
     finish = datetime.now()
     count_cycled = len([x for x in steps if x[0] == 10001])
-    not_cycled = [x for x in steps if x != 10001]
-    steps = [(str(x[0]), x[1]) for x in steps]
+    not_cycled = (x for x in steps if x != 10001)
+    steps = ((str(x[0]), x[1]) for x in steps)
     print(steps)
     print(f"number of looped  games {count_cycled}")
     # print(f"avarage length of the game {sum(not_cycled) / len(not_cycled)}")
