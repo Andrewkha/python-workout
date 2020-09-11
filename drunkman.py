@@ -11,11 +11,12 @@ deck = ['6', '6', '6', '6', '7', '7', '7', '7', '8', '8', '8', '8',
         'Q', 'Q', 'Q', 'Q', 'K', 'K', 'K', 'K', 'A', 'A', 'A', 'A']
 
 
-"""
-Checks which card is bigger
-Returns True if card1 is bigger, False is card2 is bigger
-"""
 def beats(card1, card2):
+    """
+    Checks which card is bigger
+    Returns True if card1 is bigger, False is card2 is bigger
+    """
+
     cards = ('6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A')
 
     if card1 == '6' and card2 == 'A':
@@ -28,8 +29,7 @@ def beats(card1, card2):
     return False
 
 
-if __name__ == '__main__':
-    logging.basicConfig(filename='drunkman.log', level=logging.INFO)
+def main():
     shuffle(deck)
     player1 = deque(deck[:18])
     player2 = deque(deck[18:])
@@ -43,18 +43,31 @@ if __name__ == '__main__':
 
         while cards1[-1] == cards2[-1]:
             logging.info(f'Spor on {cards1[-1]} and {cards2[-1]}')
-            hidden1 = player1.popleft()
+            try:
+                hidden1 = player1.popleft()
+            except IndexError:
+                logging.info('Player 1 out of cards')
+                break
             cards1.append(hidden1)
             logging.info(f'Player 1 has put {hidden1} as hidden card')
-            hidden2 = player2.popleft()
+            try:
+                hidden2 = player2.popleft()
+            except IndexError:
+                logging.info('Player 1 out of cards')
+                break
             cards2.append(hidden2)
             logging.info(f'Player 2 has put {hidden2} as hidden card')
-            open1 = player1.popleft()
-            cards1.append(open1)
-            logging.info(f'Player 1 has put {open1} as open card')
-            open2 = player2.popleft()
-            cards2.append(open2)
-            logging.info(f'Player 2 has put {open2} as open card')
+
+            try:
+                open1 = player1.popleft()
+                cards1.append(open1)
+                logging.info(f'Player 1 has put {open1} as open card')
+                open2 = player2.popleft()
+                cards2.append(open2)
+                logging.info(f'Player 2 has put {open2} as open card')
+            except IndexError:
+                logging.info(f'One of the players is out of the cards, using hidden carsds for the argue')
+                print('Using hidden cards for argue')
 
         if beats(cards1[-1], cards2[-1]):
             player1.extend(cards1)
@@ -75,3 +88,11 @@ if __name__ == '__main__':
         print(f'Player 1 wins! Number of steps {step}')
     else:
         print(f'Player 2 wins! Number of steps {step}')
+
+    return step
+
+
+if __name__ == '__main__':
+        filename = f'drunk/drunkman_{1}.log'
+        logging.basicConfig(filename=filename, level=logging.INFO)
+        main()
