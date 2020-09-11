@@ -71,7 +71,7 @@ def main(game):
                 open1 = player1.popleft()
                 open2 = player2.popleft()
             except IndexError:
-                log.append(f'Using hidden cards for argue')
+                log.append('Using hidden cards for argue')
                 print(f'Game {game}: Using hidden cards for argue')
             else:
                 cards1.append(open1)
@@ -82,23 +82,23 @@ def main(game):
         if beats(cards1[-1], cards2[-1]):
             player1.extend(cards1)
             player1.extend(cards2)
-            log.append(f'One the step {step} Player 1 got {cards2[-1]} with {cards1[-1]}, '
-                    f'the bank taken {cards1, cards2}')
+            log.append(f'One the step {step} Player 1 got {cards2[-1]} with {cards1[-1]},'
+                       f'the bank taken {cards1, cards2}')
             log.append(f'Players 1 cards: {player1}')
             log.append(f'Players 2 cards: {player2}')
         else:
             player2.extend(cards1)
             player2.extend(cards2)
             log.append(f'On the step {step} Player 2 got {cards1[-1]} with {cards2[-1]}, '
-                    f'the bank taken {cards1, cards2}')
+                       f'the bank taken {cards1, cards2}')
             log.append(f'Players 1 cards: {player1}')
             log.append(f'Players 2 cards: {player2}')
 
         if step > 10000:
             print(f'Game {game}: Looped')
             log.append(f'Game {game}: Looped')
-            with open(f'drunk/game_{game}.txt', 'w') as file:
-                file.write('\n'.join(log))
+            with open(f'drunk/game_{game}.txt', 'w') as fl:
+                fl.write('\n'.join(log))
             return step, winner
 
     if player1:
@@ -108,8 +108,8 @@ def main(game):
         print(f'Game {game}: Player 2 wins! Number of steps {step}')
         winner = '2'
 
-    with open(f'drunk/game_{game}.txt', 'w') as file:
-        file.write('\n'.join(log))
+    with open(f'drunk/game_{game}.txt', 'w') as fl:
+        fl.write('\n'.join(log))
 
     return step, winner
 
