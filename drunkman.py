@@ -130,8 +130,16 @@ if __name__ == '__main__':
         #             one.unlink()
 
     finish = datetime.now()
-    steps = ((str(x[0]), x[1]) for x in steps)
+    steps = ((x[0], x[1]) for x in steps)
 
+    results_winners = {}
+    results_steps = {}
+
+    for one in steps:
+        results_winners[one[1]] = results_winners.get(one[1], 0) + 1
+        results_steps[one[0]] = results_steps.get(one[0], 0) + one[0]
+
+    print(results_winners)
     # print(f"avarage length of the game {sum(not_cycled) / len(not_cycled)}")
     # print(f"minimal steps count: {min(not_cycled)}")
     # print(f"maximum steps count: {max(not_cycled)}")
