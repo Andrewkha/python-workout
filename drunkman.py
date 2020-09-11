@@ -7,7 +7,6 @@ from collections import deque
 import csv
 from datetime import datetime
 from pathlib import Path
-from zipfile import ZipFile, ZIP_DEFLATED
 
 deck = ['6', '6', '6', '6', '7', '7', '7', '7', '8', '8', '8', '8',
         '9', '9', '9', '9', '10', '10', '10', '10', 'J', 'J', 'J', 'J',
@@ -43,6 +42,10 @@ def main(game):
 
     log = []
 
+    log.append(f'Deck: {deck}')
+    log.append(f'Player 1: {player1}')
+    log.append(f'Player 2: {player2}')
+
     winner = 'None'
 
     step = 0
@@ -56,18 +59,15 @@ def main(game):
             log.append(f'Spor on {cards1[-1]} and {cards2[-1]}')
             try:
                 hidden1 = player1.popleft()
-            except IndexError:
-                log.append('Player 1 out of cards')
-                break
-            cards1.append(hidden1)
-            log.append(f'Player 1 has put {hidden1} as hidden card')
-            try:
                 hidden2 = player2.popleft()
             except IndexError:
-                log.append('Player 2 out of cards')
+                log.append('Player out of cards')
                 break
-            cards2.append(hidden2)
-            log.append(f'Player 2 has put {hidden2} as hidden card')
+            else:
+                cards1.append(hidden1)
+                log.append(f'Player 1 has put {hidden1} as hidden card')
+                cards2.append(hidden2)
+                log.append(f'Player 2 has put {hidden2} as hidden card')
 
             try:
                 open1 = player1.popleft()
@@ -120,21 +120,18 @@ if __name__ == '__main__':
     steps = []
     start = datetime.now()
     path = Path().cwd() / 'drunk'
-    for i in range(100):
+    for i in range(1000):
         steps.append(main(i))
-        if i % 10 == 0:
-            name = path / f'{i}.zip'
-            with ZipFile(name, 'w', compression=ZIP_DEFLATED, compresslevel=5) as zip_file:
-                for one in path.glob('*.txt'):
-                    zip_file.write(one)
-                    one.unlink()
+        # if i % 10 == 0:
+        #     name = path / f'{i}.zip'
+        #     with ZipFile(name, 'w', compression=ZIP_DEFLATED, compresslevel=5) as zip_file:
+        #         for one in path.glob('*.txt'):
+        #             zip_file.write(one)
+        #             one.unlink()
 
     finish = datetime.now()
-    count_cycled = len([x for x in steps if x[0] == 10001])
-    not_cycled = (x for x in steps if x != 10001)
     steps = ((str(x[0]), x[1]) for x in steps)
-    print(steps)
-    print(f"number of looped  games {count_cycled}")
+
     # print(f"avarage length of the game {sum(not_cycled) / len(not_cycled)}")
     # print(f"minimal steps count: {min(not_cycled)}")
     # print(f"maximum steps count: {max(not_cycled)}")
