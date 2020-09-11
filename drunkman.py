@@ -5,6 +5,7 @@ Python emulation of the famous card game drunkman
 from random import shuffle
 from collections import deque
 import csv
+from datetime import datetime
 
 deck = ['6', '6', '6', '6', '7', '7', '7', '7', '8', '8', '8', '8',
         '9', '9', '9', '9', '10', '10', '10', '10', 'J', 'J', 'J', 'J',
@@ -115,9 +116,11 @@ def main(game):
 
 if __name__ == '__main__':
     steps = []
-    for i in range(10):
+    start = datetime.now()
+    for i in range(1000):
         steps.append(main(i))
 
+    finish = datetime.now()
     count_cycled = len([x for x in steps if x[0] == 10001])
     not_cycled = [x for x in steps if x != 10001]
     steps = [(str(x[0]), x[1]) for x in steps]
@@ -129,3 +132,5 @@ if __name__ == '__main__':
     with open('drunker.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerows(steps)
+
+    print(f"Time taken {finish - start}")
