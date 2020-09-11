@@ -6,6 +6,8 @@ from random import shuffle
 from collections import deque
 import csv
 from datetime import datetime
+from pathlib import Path
+from zipfile import ZipFile, ZIP_DEFLATED
 
 deck = ['6', '6', '6', '6', '7', '7', '7', '7', '8', '8', '8', '8',
         '9', '9', '9', '9', '10', '10', '10', '10', 'J', 'J', 'J', 'J',
@@ -117,8 +119,15 @@ def main(game):
 if __name__ == '__main__':
     steps = []
     start = datetime.now()
-    for i in range(1000):
+    path = Path().cwd() / 'drunk'
+    for i in range(100):
         steps.append(main(i))
+        if i % 10 == 0:
+            name = path / f'{i}.zip'
+            with ZipFile(name, 'w', compression=ZIP_DEFLATED, compresslevel=5) as zip_file:
+                for one in path.glob('*.txt'):
+                    zip_file.write(one)
+                    one.unlink()
 
     finish = datetime.now()
     count_cycled = len([x for x in steps if x[0] == 10001])
