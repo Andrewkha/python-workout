@@ -89,8 +89,8 @@ def main(game):
             log.append(f'Players 1 cards: {player1}')
             log.append(f'Players 2 cards: {player2}')
         else:
-            player2.extend(cards1)
             player2.extend(cards2)
+            player2.extend(cards1)
             log.append(f'On the step {step} Player 2 got {cards1[-1]} with {cards2[-1]}, '
                        f'the bank taken {cards1, cards2}')
             log.append(f'Players 1 cards: {player1}')
