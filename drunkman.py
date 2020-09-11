@@ -40,6 +40,8 @@ def main(game):
 
     log = []
 
+    winner = 'None'
+
     step = 0
 
     while player1 and player2:
@@ -80,14 +82,14 @@ def main(game):
             player1.extend(cards1)
             player1.extend(cards2)
             log.append(f'One the step {step} Player 1 got {cards2[-1]} with {cards1[-1]}, '
-                         f'the bank taken {cards1, cards2}')
+                    f'the bank taken {cards1, cards2}')
             log.append(f'Players 1 cards: {player1}')
             log.append(f'Players 2 cards: {player2}')
         else:
             player2.extend(cards1)
             player2.extend(cards2)
             log.append(f'On the step {step} Player 2 got {cards1[-1]} with {cards2[-1]}, '
-                         f'the bank taken {cards1, cards2}')
+                    f'the bank taken {cards1, cards2}')
             log.append(f'Players 1 cards: {player1}')
             log.append(f'Players 2 cards: {player2}')
 
@@ -96,32 +98,34 @@ def main(game):
             log.append(f'Game {game}: Looped')
             with open(f'drunk/game_{game}.txt', 'w') as file:
                 file.write('\n'.join(log))
-            return step
+            return step, winner
 
     if player1:
         print(f'Game {game}: Player 1 wins! Number of steps {step}')
+        winner = '1'
     else:
         print(f'Game {game}: Player 2 wins! Number of steps {step}')
+        winner = '2'
 
     with open(f'drunk/game_{game}.txt', 'w') as file:
         file.write('\n'.join(log))
 
-    return step
+    return step, winner
 
 
 if __name__ == '__main__':
     steps = []
-    for i in range(1000000):
+    for i in range(10):
         steps.append(main(i))
 
-    count_cycled = len([x for x in steps if x == 10001])
+    count_cycled = len([x for x in steps if x[0] == 10001])
     not_cycled = [x for x in steps if x != 10001]
-    steps = [(str(x),) for x in steps]
+    steps = [(str(x[0]), x[1]) for x in steps]
     print(steps)
     print(f"number of looped  games {count_cycled}")
-    print(f"avarage length of the game {sum(not_cycled) / len(not_cycled)}")
-    print(f"minimal steps count: {min(not_cycled)}")
-    print(f"maximum steps count: {max(not_cycled)}")
+    # print(f"avarage length of the game {sum(not_cycled) / len(not_cycled)}")
+    # print(f"minimal steps count: {min(not_cycled)}")
+    # print(f"maximum steps count: {max(not_cycled)}")
     with open('drunker.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerows(steps)
