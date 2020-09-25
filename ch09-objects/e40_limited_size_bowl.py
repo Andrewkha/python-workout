@@ -44,7 +44,7 @@ class Bowl:
         adding scoops into the bowl
         """
         for one in scoops:
-            if len(self.scoops) < Bowl.max_scoops:
+            if len(self.scoops) < self.max_scoops:
                 self.scoops.append(one)
 
 

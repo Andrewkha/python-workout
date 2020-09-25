@@ -68,14 +68,15 @@ class Shelf:
         return sum(book.price for book in self.books)
 
 
-b1 = Book('ssd', 'wesd', 23, 1)
-b2 = Book('ssd', 'wesd', 2, 6)
+if __name__ == '__main__':
+    b1 = Book('ssd', 'wesd', 23, 1)
+    b2 = Book('ssd', 'wesd', 2, 6)
 
-shelf = Shelf(5)
-shelf.add_book(b1)
-shelf.add_book(b2)
-print(shelf.total_price())
+    shelf = Shelf(5)
+    shelf.add_book(b1)
+    shelf.add_book(b2)
+    print(shelf.total_price())
 
-print(shelf.has_book('ssd'))
-print(shelf.has_book('wed'))
+    print(shelf.has_book('ssd'))
+    print(shelf.has_book('wed'))
 
