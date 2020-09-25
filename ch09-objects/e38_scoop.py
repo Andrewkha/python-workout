@@ -22,7 +22,7 @@ def create_scoops():
         print(one.flavour)
 
 
-create_scoops()
+# create_scoops()
 
 
 """
@@ -37,6 +37,6 @@ class LogFile:
         self.file = open(filename, 'w')
 
 
-logfile = LogFile('log.txt')
-logfile.file.write('rrrrr')
-logfile.file.close()
+# logfile = LogFile('log.txt')
+# logfile.file.write('rrrrr')
+# logfile.file.close()
