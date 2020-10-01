@@ -79,5 +79,5 @@ def all_lines_with_filter(path, string):
                 yield line.strip()
 
 
-for one in all_lines_with_filter('../ch08-modules', 'return'):
+for one in all_lines_with_filter('../ch08-modules', 'retur'):
     print(one)
