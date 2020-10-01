@@ -62,5 +62,22 @@ def all_lines_diff_order(path):
                 pass
 
 
-for one in all_lines_diff_order('../ch08-modules'):
+def all_lines_with_filter(path, string):
+    """Modify all_lines such that it takes two arguments—a directory name, and a
+    string. Only those lines containing the string (i.e., for which you can say s in
+    line) should be returned. If you know how to work with regular expressions
+    and Python’s re module, then you could even make the match conditional on a
+    regular expression."""
+
+    pth = Path(path)
+
+    files = (file for file in pth.iterdir() if file.is_file())
+
+    for file in files:
+        for line in open(file, encoding='utf-8'):
+            if string in line:
+                yield line.strip()
+
+
+for one in all_lines_with_filter('../ch08-modules', 'return'):
     print(one)
