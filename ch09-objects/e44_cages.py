@@ -15,6 +15,16 @@ class CoexistanceException(Exception):
     pass
 
 
+class NoAnimalInCageException(Exception):
+    """exception to raise when no animals in cage"""
+    pass
+
+
+class NoCagesInZooException(Exception):
+    """exception to raise when no cages in the zoo"""
+    pass
+
+
 """
 Our zookeepers have a macabre sense of humor when it comes to placing animals together, 
 in that they put wolves and sheep in the first cage, and snakes
@@ -30,7 +40,7 @@ Trying to add an animal to a cage that already contains an incompatible animal w
 class Cage:
     """Class for creating cages in which to put cute, furry animals."""
 
-    space = 2
+    space = 3
 
     def __init__(self, id_number):
         self.id = id_number
@@ -41,7 +51,6 @@ class Cage:
         """Add one or more animals to a cage.  Returns None."""
 
         for one in animals:
-
             in_cage = {animal.__class__.__name__ for animal in self.animals}
             total = in_cage.union(one.coexists)
             if total == one.coexists:
@@ -53,9 +62,23 @@ class Cage:
             else:
                 raise CoexistanceException
 
+    def remove_animal(self, animal):
+        """remove an animal from the cage"""
+        removed = None
+
+        for index, one in enumerate(list(self.animals)):
+            if isinstance(one, animal):
+                removed = self.animals.pop(index)
+                self.space_occupied -= animal.space_required
+                break
+
+        return removed
+
     def __repr__(self):
-        animals = ", ".join(str(animal) for animal in self.animals)
-        return f"The cage {self.id} has the following animals {animals}"
+        output = f"Cage {self.id}\n"
+        output += '\n'.join('\t' + str(animal) for animal in self.animals)
+
+        return output
 
 
 class BigCage(Cage):
@@ -63,11 +86,12 @@ class BigCage(Cage):
     space = 5
 
 
-snake = Snake('blue')
-sheep = Sheep('black')
-wolf = Wolf('grey')
+if __name__ == "__main__":
+    snake = Snake('blue')
+    sheep = Sheep('black')
+    wolf = Wolf('grey')
 
-cage1 = BigCage(1)
-cage1.add_animals(snake, sheep, wolf)
+    cage1 = BigCage(1)
+    cage1.add_animals(snake, sheep, wolf)
 
-print(cage1)
+    print(cage1)

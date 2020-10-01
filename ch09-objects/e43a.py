@@ -42,28 +42,28 @@ class Wolf(FourLeggedAnimal):
     """Class for creating 4-legged wolves of any color"""
     voice = 'Woooo'
     space_required = 2
-    coexists = {'Snake', 'Parrot'}
+    coexists = {'Snake', 'Parrot', 'Wolf'}
 
 
 class Sheep(FourLeggedAnimal):
     """Class for creating 4-legged sheep of any color"""
     voice = 'Bee'
     space_required = 2
-    coexists = {'Snake', 'Parrot'}
+    coexists = {'Snake', 'Parrot', 'Sheep'}
 
 
 class Snake(ZeroLeggedAnimal):
     """Class for creating 0-legged snakes of any color"""
     voice = 'Shhheee'
     space_required = 1
-    coexists = {'Wolf', 'Sheep'}
+    coexists = {'Wolf', 'Sheep', 'Snake'}
 
 
 class Parrot(TwoLeggedAnimal):
     """Class for creating 2-legged parrots of any color"""
     voice = 'Kar'
     space_required = 1
-    coexists = {'Wolf', 'Sheep'}
+    coexists = {'Wolf', 'Sheep', 'Parrot'}
 
 
 if __name__ == "__main__":
