@@ -85,4 +85,4 @@ class MyRange:
         raise StopIteration
 
 
-print(list(MyRange(2, 10, 3)))
+print(list(MyRange(2, 10, 4)))
